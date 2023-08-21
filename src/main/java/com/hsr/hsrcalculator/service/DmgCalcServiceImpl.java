@@ -8,6 +8,7 @@ import com.hsr.hsrcalculator.entity.DmgRequest;
 import com.hsr.hsrcalculator.entity.DmgResponse;
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.math.RoundingMode;
 
 import org.springframework.stereotype.Service;
 
@@ -38,7 +39,7 @@ public class DmgCalcServiceImpl implements DmgCalcService{
         BigDecimal lvlEnemies = (enemiesLvl.add(BigDecimal.valueOf(20)))
                 .multiply(((BigDecimal.valueOf(100).subtract(defReduc)).subtract(defIgnore)).divide(BigDecimal.valueOf(100)));
         
-        BigDecimal defMultiply = lvlChar.divide((lvlEnemies.add(lvlChar)));
+        BigDecimal defMultiply = lvlChar.divide((lvlEnemies.add(lvlChar)), 2, RoundingMode.HALF_UP);
         
         return defMultiply;
     }

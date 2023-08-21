@@ -12,6 +12,7 @@ import com.hsr.hsrcalculator.service.DmgCalcServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +28,8 @@ public class DmgCalcController {
     @Autowired
     private DmgCalcServiceImpl dmgCalcService;
     
-    @GetMapping("hsr/dmg")
+	@CrossOrigin
+    @PostMapping("hsr/dmg")
     public ResponseEntity<DmgResponse> getDmgOutput(@RequestBody DmgRequest req) {
         try {
             DmgResponse resp = dmgCalcService.dmgCalculating(req);
