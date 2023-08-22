@@ -39,7 +39,7 @@ public class DmgCalcServiceImpl implements DmgCalcService{
         BigDecimal lvlEnemies = (enemiesLvl.add(BigDecimal.valueOf(20)))
                 .multiply(((BigDecimal.valueOf(100).subtract(defReduc)).subtract(defIgnore)).divide(BigDecimal.valueOf(100)));
         
-        BigDecimal defMultiply = lvlChar.divide((lvlEnemies.add(lvlChar)), 2, RoundingMode.HALF_UP);
+        BigDecimal defMultiply = lvlChar.divide((lvlEnemies.add(lvlChar)), 6, RoundingMode.HALF_UP);
         
         return defMultiply;
     }
